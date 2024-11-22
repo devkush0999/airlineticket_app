@@ -131,7 +131,7 @@ export default function departure() {
             </View>
           </View>
         </View>
-        {/* ===================================== AutoComplete Results ======================================== */}
+        {/* ====================================== AutoComplete Results ======================================== */}
         {autoCompleteResults.length > 0 && (
           <View className="border-2 border-gray-400 bg-white rounded-xl shadow-sm mt-4">
             <FlatList
