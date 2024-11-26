@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { router } from "expo-router";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { apiToken } from "./../utils/api";
@@ -27,13 +27,17 @@ export default function departure() {
   const loadPreviousSelectedCities = async () => {
     try {
       const cities = await AsyncStorage.getItem("previousSelectedCities");
-      if (cities) {
+      if (cities != null) {
         setPreviousSelectedDeparture(JSON.parse(cities));
       }
     } catch (error) {
-      console.log(error);
+      console.log(" Error loading previous selected cities: ", error);
     }
   };
+
+  useEffect(() => {
+    loadPreviousSelectedCities();
+  }, []);
   const debounce = (func: any, delay: number) => {
     let timeoutId: any;
     return function (...args: any) {
@@ -150,6 +154,30 @@ export default function departure() {
             />
           </View>
         )}
+        {/* ====================================== Previous Selected Cities ======================================== */}
+        <View className="px-4 w-full">
+          <Text className="text-gray-500 text-lg font-bold mb-2">
+            Previous Selected Cities
+          </Text>
+
+          {previousSelectedDeparture.map((city, index) => (
+            <Pressable
+              key={index}
+              onPress={() => {
+                setFlightOfferData({
+                  ...flightOfferData,
+                  originLocationCode: city.iataCode,
+                });
+                setSearchInput(`${city.city}(${city.iataCode})`);
+              }}
+              className="bg-pink border-gray-400 border-2 rounded-xl  mb-2 px-2 py-3 my-2"
+            >
+              <Text className="text-gray-500 capitalize">
+                {city.city}({city.iataCode})
+              </Text>
+            </Pressable>
+          ))}
+        </View>
       </View>
     </View>
   );

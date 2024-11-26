@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -188,6 +188,15 @@ export default function HomeScreen() {
   const handleNavigationChange = (type: string) => {
     setPageNavigation(type);
   };
+
+  useEffect(() => {
+    const loadSelectedDestination = async () => {
+      try {
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  }, []);
 
   return (
     <View className="flex-1 border items-center bg-[#F5FF7FA] relative">
