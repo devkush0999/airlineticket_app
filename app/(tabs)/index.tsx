@@ -261,7 +261,7 @@ export default function HomeScreen() {
             onPress={() => {}}
           />
 
-          {/* ========================================================== Seat Data ======================================================== */}
+          {/* ========================================================== Seat Data= ======================================================== */}
           <View className="border-2 border-gray-300 mx-4 rounded-2xl py-3 justify-center flex-row">
             <View>
               <MaterialCommunityIcons
