@@ -298,7 +298,7 @@ export default function HomeScreen() {
               className="bg-red-200 rounded-lg justify-center items-center py-3"
               onPress={() => {}}
             >
-              <Text className="text-bold text-xl text-black">Search </Text>
+              <Text className="text-bold text-xl m-0 text-black">Search </Text>
             </Pressable>
           </View>
         </View>
